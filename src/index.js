@@ -9,8 +9,8 @@ import App from "./App";
 const store = createStore(combineReducers, applyMiddleware(ReduxThunk));
 
 ReactDOM.render(
-	<Provider store={store}>
-		<App />
-	</Provider>,
-	document.getElementById("root")
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
 );

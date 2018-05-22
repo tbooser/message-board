@@ -9,45 +9,45 @@ import * as actions from "./messaging/MessagingActions";
 import { subscribeToTimer, subscribeToMessages } from "./api";
 
 class App extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			timestamp: "no timestamp yet",
-			messages: ""
-		};
+  constructor(props) {
+    super(props);
+    this.state = {
+      timestamp: "no timestamp yet",
+      messages: ""
+    };
 
-		subscribeToTimer((err, timestamp) =>
-			this.setState({
-				timestamp
-			})
-		);
-		subscribeToMessages((err, messages) => {
-			this.setState({
-				messages
-			});
-			this.props.actions.receiveMessage(messages);
-		});
-	}
-	render() {
-		return (
-			<div className="App">
-				<HeaderContainer />
-				These are the messages: {this.state.messages}
-				<MessagingViewContainer messages={this.state.messages} />
-				<MessagingContainer />
-			</div>
-		);
-	}
+    subscribeToTimer((err, timestamp) =>
+      this.setState({
+        timestamp
+      })
+    );
+    subscribeToMessages((err, messages) => {
+      this.setState({
+        messages
+      });
+      this.props.actions.receiveMessage(messages);
+    });
+  }
+  render() {
+    return (
+      <div className="App">
+        <HeaderContainer />
+        These are the messages: {this.state.messages}
+        <MessagingViewContainer messages={this.state.messages} />
+        <MessagingContainer />
+      </div>
+    );
+  }
 }
 
 function mapStateToProps(state) {
-	return {
-		app: state
-	};
+  return {
+    app: state
+  };
 }
 
 function mapDispatchToProps(dispatch) {
-	return { actions: bindActionCreators(actions, dispatch) };
+  return { actions: bindActionCreators(actions, dispatch) };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

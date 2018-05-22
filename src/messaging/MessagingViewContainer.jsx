@@ -3,31 +3,31 @@ import { connect } from "react-redux";
 import MessageItem from "./MessageItem.jsx";
 
 export class MessagingViewContainer extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {};
+  constructor(props) {
+    super(props);
+    this.state = {};
 
-		this.displayMessages = this.displayMessages.bind(this);
-	}
+    this.displayMessages = this.displayMessages.bind(this);
+  }
 
-	componentDidUpdate() {}
+  componentDidUpdate() {}
 
-	displayMessages() {
-		let messages = this.props.app.messageList.messages;
-		return messages.map(currentMessage => {
-			return <MessageItem key={Math.random()} message={currentMessage.message} />;
-		});
-	}
+  displayMessages() {
+    let messages = this.props.app.messageList.messages;
+    return messages.map(currentMessage => {
+      return <MessageItem key={Math.random()} message={currentMessage.message} />;
+    });
+  }
 
-	render() {
-		return <div className="messaging-view-container">{this.displayMessages()}</div>;
-	}
+  render() {
+    return <div className="messaging-view-container">{this.displayMessages()}</div>;
+  }
 }
 
 function mapStateToProps(state) {
-	return {
-		app: state
-	};
+  return {
+    app: state
+  };
 }
 
 export default connect(mapStateToProps)(MessagingViewContainer);
