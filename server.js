@@ -42,14 +42,14 @@ io.on("connection", client => {
 
   client.on("action", action => {
     if (action.type === "SERVER/TEST") {
-      console.log("Received a test action!");
+      console.log("Received a test action");
       client.emit("action", { type: "message", data: "Test response from server" });
     }
   });
 
   client.on("action", action => {
     if (action.type === "SERVER/MESSAGE") {
-      console.log("Received a server/message action! => ", action.message);
+      console.log("Received a server/message action => ", action.message);
       client.emit("action", { type: "message", data: action.message });
     }
   });
