@@ -2,10 +2,8 @@ import {
   ADD_MESSAGE,
   STORE_MESSAGE_CONFIRMATION,
   RECEIVE_MESSAGE,
-  SOCKET_EMIT
+  SERVER_MESSAGE
 } from "./MessagingConstants.js";
-import openSocket from "socket.io-client";
-const socket = openSocket("http://localhost:3002");
 
 export const addMessage = message => {
   return dispatch => {
@@ -20,18 +18,12 @@ export const receiveMessage = message => {
 };
 
 export const socketEmit = message => {
-  console.log("SOCKET_EMIT", message);
-  return () => {
-    socket.emit("subscribeToMessages");
-    socket.emit({
-      message,
-      type: SOCKET_EMIT
-    });
+  return dispatch => {
+    dispatch({ message, type: SERVER_MESSAGE });
   };
 };
 
 export const postMessage = data => {
-  console.log("STORE_MESSAGE", data);
   return dispatch => {
     fetch("http://localhost:3001/messages", {
       method: "post",

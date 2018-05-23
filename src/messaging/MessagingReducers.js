@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { RECEIVE_MESSAGE } from "./MessagingConstants.js";
+import { SERVER_MESSAGE } from "./MessagingConstants.js";
 
 const messageState = {
   messages: []
@@ -7,8 +7,7 @@ const messageState = {
 
 function messageList(state = messageState, action) {
   switch (action.type) {
-    case RECEIVE_MESSAGE:
-      console.log("RECEIVE_MESSAGE reducer");
+    case SERVER_MESSAGE:
       return Object.assign(
         {},
         {
