@@ -23,6 +23,7 @@ export class MessagingInput extends Component {
     event.target.reset();
     this.props.actions.addMessage(this.state.message);
     this.props.actions.postMessage(this.state.message);
+    this.props.actions.socketEmit(this.state.message);
     console.log("Handle submit fired with the text: " + this.state.message);
     this.setState({ message: "" });
   }
