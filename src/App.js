@@ -6,34 +6,18 @@ import HeaderContainer from "./app/Header/HeaderContainer";
 import MessagingContainer from "./messaging/MessagingContainer";
 import MessagingViewContainer from "./messaging/MessagingViewContainer";
 import * as actions from "./messaging/MessagingActions";
-import { subscribeToTimer, subscribeToMessages } from "./api";
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      timestamp: "no timestamp yet",
-      messages: ""
-    };
-
-    subscribeToTimer((err, timestamp) =>
-      this.setState({
-        timestamp
-      })
-    );
-    subscribeToMessages((err, messages) => {
-      this.setState({
-        messages
-      });
-      this.props.actions.receiveMessage(messages);
-    });
+    this.state = {};
   }
+
   render() {
     return (
       <div className="App">
         <HeaderContainer />
-        These are the messages: {this.state.messages}
-        <MessagingViewContainer messages={this.state.messages} />
+        <MessagingViewContainer />
         <MessagingContainer />
       </div>
     );

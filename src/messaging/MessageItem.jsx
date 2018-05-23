@@ -7,10 +7,6 @@ export class MessageItem extends Component {
     this.state = {};
   }
 
-  componentDidUpdate() {
-    console.log(this.props);
-  }
-
   render() {
     return <div className="message-item">{this.props.message}</div>;
   }
