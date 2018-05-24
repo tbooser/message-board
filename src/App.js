@@ -6,16 +6,13 @@ import HeaderContainer from "./app/Header/HeaderContainer";
 import MessagingContainer from "./messaging/MessagingContainer";
 import MessagingViewContainer from "./messaging/MessagingViewContainer";
 import * as actions from "./messaging/MessagingActions";
+import Login from "./auth/Login.js";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   render() {
     return (
       <div className="App">
+        <Login />
         <HeaderContainer />
         <MessagingViewContainer />
         <MessagingContainer />
