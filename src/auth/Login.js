@@ -3,11 +3,6 @@ import { connect } from "react-redux";
 import Auth from "./Auth.js";
 
 class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   login() {
     const auth = new Auth();
     auth.login();
@@ -22,10 +17,4 @@ class Login extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    app: state
-  };
-}
-
-export default connect(mapStateToProps)(Login);
+export default Login;
