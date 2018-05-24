@@ -13,6 +13,7 @@ const socketIoMiddleware = createSocketIoMiddleware(socket, "SERVER/");
 const store = createStore(combineReducers, applyMiddleware(ReduxThunk, socketIoMiddleware));
 store.subscribe(() => {
   console.log("New client state ", store.getState());
+  console.log(window.localStorage);
 });
 
 ReactDOM.render(
